@@ -15,7 +15,6 @@ import Icon from 'react-native-vector-icons/Fontisto';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const styles = StyleSheet.create({
   Container: {
-    margin: 10,
     flex: 1,
   },
   image: {
@@ -33,21 +32,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
   },
-  plus: {
+  Containerplus: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#06c94e',
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    backgroundColor: 'white',
     position: 'absolute',
-    bottom: 30,
-    right: 0,
+    bottom: 0,
     flex: 1,
+    width: '100%',
+    padding: 5,
+  },
+  plus: {
+    backgroundColor: '#06c94e',
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   image2: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
     resizeMode: 'contain',
     // marginRight: 20,
   },
@@ -405,9 +410,15 @@ const Home = ({route, navigation}) => {
 
   return (
     <SafeAreaView style={styles.Container}>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingRight: 10,
+          backgroundColor: 'white',
+        }}>
         <View style={{flexDirection: 'row'}}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row', paddingLeft: 10}}>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <Image
                 source={require('./assets/wallet.png')}
@@ -455,15 +466,17 @@ const Home = ({route, navigation}) => {
           />
         </TouchableOpacity>
       </View>
-      <View style={{marginTop: 10, flex: 2}}>
+      <View style={{marginTop: 0, flex: 2}}>
         <View
           style={{
             backgroundColor: 'white',
             height: 130,
             width: '100%',
-            borderRadius: 10,
             padding: 10,
             marginBottom: 10,
+            marginTop: 10,
+            elevation: 10,
+            borderRadius: 8,
           }}>
           <View
             style={{
@@ -507,13 +520,15 @@ const Home = ({route, navigation}) => {
         ) : null}
       </View>
 
-      <TouchableOpacity
-        style={styles.plus}
-        onPress={() => {
-          navigation.navigate('AddBill');
-        }}>
-        <Icon name="plus-a" size={30} color="white" />
-      </TouchableOpacity>
+      <View style={styles.Containerplus}>
+        <TouchableOpacity
+          style={styles.plus}
+          onPress={() => {
+            navigation.navigate('AddBill');
+          }}>
+          <Icon name="plus-a" size={30} color="white" />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
