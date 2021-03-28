@@ -75,7 +75,7 @@ const Side = ({route, navigation}) => {
         <View style={styles.footer}>
           <TouchableOpacity
             style={{
-              backgroundColor: '#E6F7EA',
+              backgroundColor: '#d4155b',
               width: 200,
               padding: 10,
               borderRadius: 20,
@@ -86,9 +86,7 @@ const Side = ({route, navigation}) => {
                 money: totalMoney,
               });
             }}>
-            <Text style={{color: '#5ECA79', textAlign: 'center'}}>
-              TIẾP TỤC
-            </Text>
+            <Text style={{color: 'white', textAlign: 'center'}}>TIẾP TỤC</Text>
           </TouchableOpacity>
         </View>
       </View>

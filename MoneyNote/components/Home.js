@@ -226,11 +226,13 @@ const Home = ({route, navigation}) => {
   const [totalMoney, setTotalMoney] = useState(money);
   const [moneySpend, setMoneySpend] = useState(0);
   const [earnMoney, setEarnMoney] = useState(money);
+  const [bname, setBname] = useState(name);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getData('header').then(result => {
       let newData = JSON.parse(result);
+      setBname(newData.nname);
       setTotalMoney(newData.ntotal);
       setEarnMoney(newData.nearnMoney);
       setMoneySpend(newData.nspMoney);
@@ -262,6 +264,7 @@ const Home = ({route, navigation}) => {
   };
 
   let dataHeder = {
+    nname: name,
     ntotal: totalMoney,
     nearnMoney: earnMoney,
     nspMoney: moneySpend,
@@ -331,8 +334,8 @@ const Home = ({route, navigation}) => {
               flex: 1,
             }}>
             <View style={{justifyContent: 'center'}}>
-              <Text style={{fontSize: 20}}>{item.ntitle}</Text>
-              <Text style={{fontSize: 15, color: '#afbab9'}}>{item.nnote}</Text>
+              <Text style={{fontSize: 15}}>{item.ntitle}</Text>
+              <Text style={{fontSize: 13, color: '#afbab9'}}>{item.nnote}</Text>
             </View>
             {item.nsp === true ? (
               <Text style={{textAlign: 'center', color: 'red'}}>
