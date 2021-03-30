@@ -81,10 +81,7 @@ const Side = ({route, navigation}) => {
               borderRadius: 20,
             }}
             onPress={() => {
-              navigation.navigate('Home', {
-                name: walletName,
-                money: totalMoney,
-              });
+              navigation.navigate('Home', {});
             }}>
             <Text style={{color: 'white', textAlign: 'center'}}>TIẾP TỤC</Text>
           </TouchableOpacity>

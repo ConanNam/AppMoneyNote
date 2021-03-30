@@ -225,7 +225,8 @@ const getData = async key => {
 };
 
 const Home = ({route, navigation}) => {
-  const {name, money} = route.params;
+  const {name, money = 0} = route.params;
+  console.log('route.params', route.params);
   const [totalMoney, setTotalMoney] = useState(money);
   const [moneySpend, setMoneySpend] = useState(0);
   const [earnMoney, setEarnMoney] = useState(money);
@@ -235,6 +236,7 @@ const Home = ({route, navigation}) => {
   useEffect(() => {
     getData('header').then(result => {
       let newData = JSON.parse(result);
+      console.log('header newData', newData);
       setBname(newData.nname);
       setTotalMoney(newData.ntotal);
       setEarnMoney(newData.nearnMoney);
@@ -401,9 +403,13 @@ const Home = ({route, navigation}) => {
   }, [confirm]);
 
   useEffect(() => {
-    setTotalMoney(parseFloat(earnMoney) - parseFloat(moneySpend));
-    storeData('header', dataHeder);
-    storeData('body', data);
+    if (name) {
+      setBname(name);
+      setTotalMoney(parseFloat(earnMoney) - parseFloat(moneySpend));
+      storeData('header', dataHeder);
+      console.log('dataHeder', dataHeder, name);
+      storeData('body', data);
+    }
   }, [earnMoney, moneySpend]);
 
   return (
@@ -427,7 +433,7 @@ const Home = ({route, navigation}) => {
               style={{
                 marginLeft: 10,
               }}>
-              <Text>{name}</Text>
+              <Text>{bname}</Text>
               <Text>
                 {totalMoney
                   .toString()
